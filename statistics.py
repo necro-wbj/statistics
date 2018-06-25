@@ -1,12 +1,11 @@
 #!python3
 import math
 data = [30, 36, 47, 50, 52, 52, 56, 60, 63, 70, 70, 110]  # [這裡放數值用逗號隔開]
-length = len(data)
-list.sort(data)
 
 
 # 中位數
 def Median(data):
+    list.sort(data)
     length = len(data)
     if length % 2 == 0:
         if length == 2:
@@ -18,14 +17,13 @@ def Median(data):
 
 
 # 平均數
-def Mean():
-    global data, length
+def Mean(data):
+    length = len(data)
     return sum(data) / length
 
 
 # 眾數
-def Mode():
-    global data
+def Mode(data):
     result = list()
     times = [0, 0]
     for i in set(data):
@@ -39,8 +37,9 @@ def Mode():
 
 
 # 四分位數
-def Quartile():
-    global data, length
+def Quartile(data):
+    list.sort(data)
+    length = len(data)
     Q = [0, 0, 0]
     Q[1] = Median(data)
     if length % 2 == 0:
@@ -54,18 +53,18 @@ def Quartile():
 
 
 # 變異數
-def Variance():
-    global data, length
-    return sum(map(lambda x: (x - Mean())**2, data)) / length
+def Variance(data):
+    length = len(data)
+    return sum(map(lambda x: (x - Mean(data))**2, data)) / length
 
 
-print(data)
-print("中位數：", Median(data))
-print("平均數：", Mean())
-print("眾數：", *Mode())
-Quartile = Quartile()
+print("平均數：", Mean(data))
+print("眾數：", *Mode(data))
+Quartile = Quartile(data)
 print("第1四分位數：", Quartile[0])
 print("第2四分位數：", Quartile[1])
 print("第3四分位數：", Quartile[2])
-print("變異數：", Variance())
-print("標準差", math.sqrt(Variance()))
+print("IQR：", Quartile[2] - Quartile[0])
+print("1.5倍IQR：", 1.5*(Quartile[2] - Quartile[0]))
+print("變異數：", Variance(data))
+print("標準差", math.sqrt(Variance(data)))
