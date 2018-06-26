@@ -4,9 +4,9 @@ import math
 data = [1, 2, 3, 4]  # [這裡輸入資料，用逗號隔開]
 
 
-def Chebyshew(data, k):
+def Chebyshew(data, x):
     Standard_Deviation = math.sqrt(statistics.Variance(data))
-    k = (statistics.Mean(data) - k) / Standard_Deviation
+    k = (statistics.Mean(data) - x) / Standard_Deviation
     result = len(data) * 1 / k**2 * 100 / 100
     return result
 
