@@ -58,6 +58,8 @@ def Variance(data):
     return sum(map(lambda x: (x - Mean(data))**2, data)) / length
 
 
+list.sort(data)
+print("資料：", *data)
 print("平均數：", Mean(data))
 print("眾數：", *Mode(data))
 Quartile = Quartile(data)
@@ -65,6 +67,6 @@ print("第1四分位數：", Quartile[0])
 print("第2四分位數：", Quartile[1])
 print("第3四分位數：", Quartile[2])
 print("IQR：", Quartile[2] - Quartile[0])
-print("1.5倍IQR：", 1.5*(Quartile[2] - Quartile[0]))
+print("1.5倍IQR：", 1.5 * (Quartile[2] - Quartile[0]))
 print("變異數：", Variance(data))
 print("標準差", math.sqrt(Variance(data)))
